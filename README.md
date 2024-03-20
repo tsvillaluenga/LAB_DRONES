@@ -19,18 +19,33 @@
 
 - Ejercicio "Simple Gazebo Example": mission_planner.py no se ejecuta bien, problemas con el json?
 - Ejercicio "Crazyflie Gates Example": mission.py -s no funciona bien, no realiza el movimiento esperado (error: goal rejected)
+  
   ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/a1af5257-dbc0-4ef9-94c7-46c4bfc50abc)
 
 
 ## APUNTES: Nodos ROS2
 rclcpp::**spin()** --> Se encarga de mandar acciones/procesos a la cola de ejecución 
-executor --> es el encargado de ejecutar las acciones de la cola
+executor --> es el encargado de ejecutar/consumir las acciones de la cola
 
 ### Tipos de nodos
 
-#### Composable (CONTAINER - COMPONENT)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/97744cf0-247f-4d51-b2cf-d4cc4dca1d07)
 
+**--> Normalmente en los STANDALONE NODES se utiliza un executor por cada nodo, aunque realmente en muchos casos se podría utilizar un mismo executor para ahorrar espacio de memoria reservado para la ejecución (ya que en muchos casos no es necesario grandes frecuencias de cómputo)**
+
+[FALTA AÑADIR BIBLIOGRAFÍA)
+
+#### Composable (CONTAINER - COMPONENT)
+Un mismo **executor** para **varios nodos.**
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e03c5761-3f49-4e9b-be6d-b3707c706c80)
+
+
+[FALTA AÑADIR BIBLIOGRAFÍA)
 
 #### Lifecycle (Máquina de estados)
 
-  
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/04412c4f-3b0c-4e21-951a-a770656d3a0c)
+
+[FALTA AÑADIR BIBLIOGRAFÍA)
+https://design.ros2.org/articles/node_lifecycle.html
