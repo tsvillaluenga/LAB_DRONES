@@ -23,6 +23,25 @@
   ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/a1af5257-dbc0-4ef9-94c7-46c4bfc50abc)
 
 
+
+
+
+## Trabajo de asignatura ROS2 con Aerostack2
+### Problemas
+- No he podido acceder a los valores de posición del topic /groud_truth, /self_location ni ninguno relacionado con "pose" o "twist". Esto hace que sea más complicado predecir la orientación del dron.
+- No he podido utilizar las clases "Mission", "Mission_interpreter" ni "Drone_interface" --> he utilizado directamente la clase "drone_interface_teleop" para los movimientos del dron
+- Ejecución de un archivo .sdf junto a la lógica actual del archivo .json
+
+### Videos del funcionamiento
+
+[![Alt text](https://img.youtube.com/vi/configuroweb/0.jpg)](https://www.youtube.com/watch?v=w7MFQtqwtfY)
+
+[![Alt text](https://img.youtube.com/vi/configuroweb/0.jpg)](https://www.youtube.com/watch?v=6oc16JxaSMs)
+
+
+
+
+
 ## APUNTES: Nodos ROS2
 rclcpp::**spin()** --> Se encarga de mandar acciones/procesos a la cola de ejecución 
 executor --> es el encargado de ejecutar/consumir las acciones de la cola
@@ -49,3 +68,48 @@ Un mismo **executor** para **varios nodos.**
 
 [FALTA AÑADIR BIBLIOGRAFÍA)
 https://design.ros2.org/articles/node_lifecycle.html
+
+
+
+
+
+
+
+## Monitorización de recursos
+Se han observado 2 métodos:
+
+### htop o nmon
+Ambos métodos son muy parecidos y tienen capacidad de filtrar por servicios, procesos o nombres. Además existen maneras de grabar los datos obtenidos de la ejecución para un posterior análisis.
+
+#### htop
+**Ejecutar:**  `htop`
+**Para guardar los datos obtenidos:**  `top -b -n1 > top.txt`
+Permite guardar tantas iteraciones como uno quiera modificando el parámetro `-nX` donde `X` será el número de iteraciones que se quieren guardar. Cada iteración se realiza cada en torno 3 segundos.
+
+#### nmon
+**Ejecutar:**  `nmon`
+**Para guardar los datos obtenidos:**  `nmon -f -s <secs> -c <refreshno>`
+Permite recopilar los datos en un archivo. La opción `-`f le dice a nmon que recopile los datos y los coloque en un archivo. Nmon especifica el archivo, que termina en `.nmon` (*CSV Spreadsheet format*). La opción `-s <secs>` le dice a nmon que recopile datos cada <secs> segundos. La opción `-c <refreshno>` le dice a nmon que recopile el número de actualizaciones <refreshno> . El período de tiempo total en el que nmon recopila datos es solo el producto de <secs> y <refreshno>. De todas maneras verdemás parámetros importantes en `ǹmon -h`, ya que debido a la gran cantidad de datos que aporta, hay que filtrar algo más los datos pedidos.
+
+
+### topnode
+Según la teoría es ideal para lo que buscamos. Se deben introducir componentes/nodos en un container y el nodo de análisis monitoriza el uso de los recursos de esos nodos introducidos en el container.
+
+[Github del recurso "topnode"]([https://pages.github.com/](https://github.com/safe-ros/topnode))
+
+En */topnode/topnode/launch* existe un archivo launcher como el del ejemplo de Github mediante el cual se puede realizar la instrumentación del container.
+**PROBLEMAS:** No consigo obtener datos visuales de la ejecución de este container como utilizando las aplicaciones anteriores. No entiendo exactamente qué es lo que tendría que salir.
+**RESULTADOS:** 
+Container:
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/65ba5e7f-3ec7-48ab-9832-41a47e688dc1)
+
+Talker publicando, pero ¿Necesita ejecutable para ser monitorizado?¿Qúe ejecutable?:
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6139adb2-958f-435a-8e1d-5497041e58fb)
+
+Monitorizando:
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3a7d034a-cea8-4ced-bb4f-69619dbd5048)
+
+
+
+
+
