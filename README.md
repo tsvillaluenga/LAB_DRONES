@@ -95,10 +95,12 @@ Permite recopilar los datos en un archivo. La opción `-`f le dice a nmon que re
 ### topnode
 Según la teoría es ideal para lo que buscamos. Se deben introducir componentes/nodos en un container y el nodo de análisis monitoriza el uso de los recursos de esos nodos introducidos en el container.
 
-[Github del recurso "topnode"]([https://pages.github.com/](https://github.com/safe-ros/topnode))
+([Github del recurso "topnode"](https://github.com/safe-ros/topnode))
 
 En */topnode/topnode/launch* existe un archivo launcher como el del ejemplo de Github mediante el cual se puede realizar la instrumentación del container.
+
 **PROBLEMAS:** No consigo obtener datos visuales de la ejecución de este container como utilizando las aplicaciones anteriores. No entiendo exactamente qué es lo que tendría que salir.
+
 **RESULTADOS:** 
 Container:
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/65ba5e7f-3ec7-48ab-9832-41a47e688dc1)
