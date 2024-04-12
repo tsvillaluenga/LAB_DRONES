@@ -14,7 +14,9 @@
 
 ## Problemas observados tras ejecucion de Aerostack binario
 - Problema con "keyboard teleoperation interface" (solucionado):
+  
   1/ crearte un workspace para aerostack2 (as2_ws) y clonarte nuestro repo: https://github.com/aerostack2/aerostack2.git
+  
   2/ Antes de compilar, BORRAR TODAS LAS CARPETAS MENOS: as2_cli, as2_python_api, docker.
 
 - Movimientos tras hover --> guarda anterior movimiento durante un instante y después toma el nuevo valor
