@@ -92,24 +92,49 @@ Permite guardar tantas iteraciones como uno quiera modificando el parámetro `-n
 Permite recopilar los datos en un archivo. La opción `-`f le dice a nmon que recopile los datos y los coloque en un archivo. Nmon especifica el archivo, que termina en `.nmon` (*CSV Spreadsheet format*). La opción `-s <secs>` le dice a nmon que recopile datos cada <secs> segundos. La opción `-c <refreshno>` le dice a nmon que recopile el número de actualizaciones <refreshno> . El período de tiempo total en el que nmon recopila datos es solo el producto de <secs> y <refreshno>. De todas maneras verdemás parámetros importantes en `ǹmon -h`, ya que debido a la gran cantidad de datos que aporta, hay que filtrar algo más los datos pedidos.
 
 
+
 ### topnode
-Según la teoría es ideal para lo que buscamos. Se deben introducir componentes/nodos en un container y el nodo de análisis monitoriza el uso de los recursos de esos nodos introducidos en el container.
 
 ([Github del recurso "topnode"](https://github.com/safe-ros/topnode))
 
-En */topnode/topnode/launch* existe un archivo launcher como el del ejemplo de Github mediante el cual se puede realizar la instrumentación del container.
+Genera un nuevo nodo de ROS 2 que permite monitorizar los recursos de un container. Para ello, debes crear un container, meter los nodos que deseas monitorizar en él e introducir el nodo `/resource_monitor` tambien en el container. Este nodo genera **2 nuevos topics** a partir de los cuales se puede obtener toda la información de monitorización. Los campos que aportan dichos topics son los siguientes:
+```
+/resource_monitor/cpu_memory_usage
+  pid
+  cpu_usage
+    elapsed_time
+    user_mode_time
+    total_user_mode_time
+    kernel_mode_time
+    total_kernel_mode_time
+    percent
+    load_average
+  memory_usage
+    max_resident_set_size
+    shared_size
+    virtual_size
+    percent
 
-**PROBLEMAS:** No consigo obtener datos visuales de la ejecución de este container como utilizando las aplicaciones anteriores. No entiendo exactamente qué es lo que tendría que salir.
+/resource_monitor/memory_state
+  total_program_size
+  resident_size
+  shared_page_count
+  text_size
+  lib_size
+  data_size
+  dirty_pages
+```
+A partir de estos datos habrá que elegir cuales son los que realmente nos interesan y cuales no.
 
-**RESULTADOS:** 
-Container:
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/65ba5e7f-3ec7-48ab-9832-41a47e688dc1)
+Para inicial el monitoreo de recursos habrá que configurar primero el nodo `/resource_monitor` mediante un lifecycle. Para ello:
+1º/ `ros2 lifecycle set /resource_monitor configure MODO`
+2º/ `ros2 lifecycle set /resource_monitor activate MODO`
+3º/ `ros2 lifecycle set /resource_monitor deactivate MODO`
 
-Talker publicando, pero ¿Necesita ejecutable para ser monitorizado?¿Qúe ejecutable?:
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6139adb2-958f-435a-8e1d-5497041e58fb)
+OTRO/ `ros2 lifecycle set /resource_monitor shutdown MODO`
+OTRO/ `ros2 lifecycle set /resource_monitor clear MODO`
 
-Monitorizando:
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3a7d034a-cea8-4ced-bb4f-69619dbd5048)
+Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-daemon` o `--spin-time`.
 
 
 
