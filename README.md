@@ -76,7 +76,8 @@ https://design.ros2.org/articles/node_lifecycle.html
 
 
 ## Monitorización de recursos
-Se han observado 2 métodos:
+Se han observado varios métodos:
+
 
 ### htop o nmon
 Ambos métodos son muy parecidos y tienen capacidad de filtrar por servicios, procesos o nombres. Además existen maneras de grabar los datos obtenidos de la ejecución para un posterior análisis.
@@ -90,6 +91,39 @@ Permite guardar tantas iteraciones como uno quiera modificando el parámetro `-n
 **Ejecutar:**  `nmon`
 **Para guardar los datos obtenidos:**  `nmon -f -s <secs> -c <refreshno>`
 Permite recopilar los datos en un archivo. La opción `-`f le dice a nmon que recopile los datos y los coloque en un archivo. Nmon especifica el archivo, que termina en `.nmon` (*CSV Spreadsheet format*). La opción `-s <secs>` le dice a nmon que recopile datos cada <secs> segundos. La opción `-c <refreshno>` le dice a nmon que recopile el número de actualizaciones <refreshno> . El período de tiempo total en el que nmon recopila datos es solo el producto de <secs> y <refreshno>. De todas maneras verdemás parámetros importantes en `ǹmon -h`, ya que debido a la gran cantidad de datos que aporta, hay que filtrar algo más los datos pedidos.
+
+#### Métodos para ROS
+-  rosprofiler ([Github del recurso](http://wiki.ros.org/rosprofiler))
+-  rqt_top ([Github del recurso](http://wiki.ros.org/rqt_top))
+-  rp2_computer_monitor (bastante completa) ([Github del recurso](http://wiki.ros.org/rp2_computer_monitor))
+-  cpu_monitor ([Github del recurso](https://github.com/alspitz/cpu_monitor))
+
+#### rotop (ROS 2)
+([Github del recurso](https://github.com/iwatake2222/rotop))
+Es una herramienta interesante que se asemeja a lo que puede aportar tanto nmon, como top o htop pero de una manera más legible, sencilla y con datos más simples. Además de aportar valores de monitorización de recursos, tambien te los grafica mediante su propia GUI.
+
+**PROBLEMA:** Al ejecutarlo de cualquier manera se obtiene un error. Puede ser debido al ordenador y directamente por que la versión del software está atrasada o sin seguimiento.
+```
+  File "/home/tsvillaluenga/.local/bin/rotop", line 8, in <module>
+    sys.exit(main())
+  File "/home/tsvillaluenga/.local/lib/python3.10/site-packages/rotop/rotop.py", line 91, in main
+    curses.wrapper(main_curses, args)
+  File "/usr/lib/python3.10/curses/__init__.py", line 94, in wrapper
+    return func(stdscr, *args, **kwds)
+  File "/home/tsvillaluenga/.local/lib/python3.10/site-packages/rotop/rotop.py", line 49, in main_curses
+    _ = data_container.run(top_runner, result_show_all_lines, args.num_process)
+  File "/home/tsvillaluenga/.local/lib/python3.10/site-packages/rotop/data_container.py", line 62, in run
+    self.df_cpu_history = self.sort_df_in_column(self.df_cpu_history)
+  File "/home/tsvillaluenga/.local/lib/python3.10/site-packages/rotop/data_container.py", line 75, in sort_df_in_column
+    df = df.sort_values(by=len(df)-1, axis=1, ascending=False)
+  File "/home/tsvillaluenga/.local/lib/python3.10/site-packages/pandas/core/frame.py", line 7176, in sort_values
+    k = self._get_label_or_level_values(by[0], axis=axis)
+  File "/home/tsvillaluenga/.local/lib/python3.10/site-packages/pandas/core/generic.py", line 1910, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: -1
+```
+
+
 
 
 
@@ -135,6 +169,7 @@ OTRO/ `ros2 lifecycle set /resource_monitor shutdown MODO`
 OTRO/ `ros2 lifecycle set /resource_monitor clear MODO`
 
 Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-daemon` o `--spin-time`.
+
 
 
 
