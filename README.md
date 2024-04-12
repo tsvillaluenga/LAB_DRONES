@@ -27,7 +27,7 @@
   ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/a1af5257-dbc0-4ef9-94c7-46c4bfc50abc)
 
 
-
+<br>
 
 
 ## Trabajo de asignatura ROS2 con Aerostack2
@@ -43,7 +43,8 @@
 [![Alt text](https://img.youtube.com/vi/configuroweb/0.jpg)](https://www.youtube.com/watch?v=6oc16JxaSMs)
 
 
-
+<br>
+<br>
 
 
 ## APUNTES: Nodos ROS2
@@ -75,8 +76,8 @@ https://design.ros2.org/articles/node_lifecycle.html
 
 
 
-
-
+<br>
+<br>
 
 
 ## Monitorización de recursos
@@ -101,6 +102,8 @@ Permite recopilar los datos en un archivo. La opción `-`f le dice a nmon que re
 -  rqt_top ([Github del recurso](http://wiki.ros.org/rqt_top))
 -  rp2_computer_monitor (bastante completa) ([Github del recurso](http://wiki.ros.org/rp2_computer_monitor))
 -  cpu_monitor ([Github del recurso](https://github.com/alspitz/cpu_monitor))
+
+  
 
 #### rotop (ROS 2)
 ([Github del recurso](https://github.com/iwatake2222/rotop))
@@ -128,8 +131,8 @@ KeyError: -1
 ```
 
 
-
-
+<br>
+<br>
 
 ### topnode
 
@@ -165,11 +168,15 @@ Genera un nuevo nodo de ROS 2 que permite monitorizar los recursos de un contain
 A partir de estos datos habrá que elegir cuales son los que realmente nos interesan y cuales no.
 
 Para inicial el monitoreo de recursos habrá que configurar primero el nodo `/resource_monitor` mediante un lifecycle. Para ello:
+
 1º/ `ros2 lifecycle set /resource_monitor configure MODO`
+
 2º/ `ros2 lifecycle set /resource_monitor activate MODO`
+
 3º/ `ros2 lifecycle set /resource_monitor deactivate MODO`
 
 OTRO/ `ros2 lifecycle set /resource_monitor shutdown MODO`
+
 OTRO/ `ros2 lifecycle set /resource_monitor clear MODO`
 
 Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-daemon` o `--spin-time`.
