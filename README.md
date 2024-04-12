@@ -6,6 +6,10 @@
 - Nociones básicas de arquitectura de Aerostack
 - Asistencia a vuelos reales X13 - 10:30 (Exhibición) y J14 - 11:30 (Curso de drones)
 - Realización de ejemplos básicos de simulación con Gacebo y Aerostack, con ayuda de la "keyboard teleoperation interface"
+- Estudio de MOnitorización de recursos con behaviors
+- Migración keyboard de Aerostack a RQt
+
+<br>
 
 
 ## Problemas observados tras ejecucion de Aerostack binario
