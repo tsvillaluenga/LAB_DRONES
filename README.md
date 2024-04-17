@@ -188,3 +188,48 @@ Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-
 
 
 
+<br>
+<br>
+<br>
+<br>
+## Monitorización recursos - Datos obtenidos
+### Composable behaviors
+
+#### MISSION (mission.py)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2952bb5f-e98f-4260-ad0e-96197feb5b5c)
+<br>
+
+**Tiempo de ejecución de mission.py inicio y fin:**
+A partir de las siguientes gráficas se puede observar el tiempo de ejecución necesario a la hora de ejecutar el archivo mission.py.
+
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/85fa2971-e8ec-469e-ada6-a764cc77e006)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/241d056c-a437-44a1-974f-5fb6ffaace16)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/927a8356-d89e-4fb9-bcbc-648eca6fce0d)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/26ff80ad-4eb3-45d4-bfaf-5c1a803a0a9c)
+(A esta última gráfica no se le ha encontrado aún el sentido relativo al proceso)
+
+<br>
+
+**USO DE RECURSOS:**
+Tamaño de memoria utilizado durante ejecución del programa.
+
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/57c917a4-df86-4df0-928c-ae3e4a2210ae)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e23b2a2-0fb0-4614-8265-e53b48ed93b8)
+
+
+---------------------------------------------------------------------
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e52b8804-6914-4c09-9447-2892329986b8)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d5c5bf38-4fe4-4145-9a15-fc9f23e79c2a)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3dae004a-8504-4288-b12e-5a1309040131)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e3096efb-6582-4a5e-8ed4-d8aae3177773)
+
+<br>
+
+### Conclusión
+
+No existen diferencias de uso de memoria a la hora de ejecutar un behavior u otro, el uso de memoria durante la ejecución es constante. Habrá que comprobar su uso de memoria usando diferentes caracteristicas para comprobar cuales proporcionan mejor rendimiento. 
+
+
+
