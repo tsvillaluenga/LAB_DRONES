@@ -192,6 +192,7 @@ Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-
 <br>
 <br>
 <br>
+
 ## Monitorización recursos - Datos obtenidos
 ### Composable behaviors
 
