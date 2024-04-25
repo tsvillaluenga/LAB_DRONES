@@ -234,3 +234,102 @@ No existen diferencias de uso de memoria a la hora de ejecutar un behavior u otr
 
 
 
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+## Standalone nodes -> Composable nodes
+**Referencias a tener en cuenta:**
+https://docs.ros.org/en/humble/Tutorials/Intermediate/Writing-a-Composable-Node.html
+https://docs.ros.org/en/humble/How-To-Guides/Launching-composable-nodes.html
+<br>
+
+Se ha provado con varios nodos (state_estimator, motion_controller,etc.) y finalmente sale siempre el mismo mensaje al ejecutar cada launch individualmente: *_(Ejemplo para State_Estimator)_*:
+``` Failed to load node 'StateEstimator' of type 'StateEstimator' in container 'container': Could not find requested resource in ament index ```
+<br>
+
+* Se ha probado ha crear un nuevo container dentro del nodo pero sigue apareciendo el problema. **El container se crea correctamente, lo que no se crea es el composable node**. 
+* Se ha probado tambien a crear primero el composable node y después el container que lo contenga, pero el error persiste. 
+* Se han seguido los pasos del tutorial https://docs.ros.org/en/humble/Tutorials/Intermediate/Writing-a-Composable-Node.html, pero no cambia la forma de actuar en su ejecución.
+<br>
+
+Eejmplo de código implementado en en launch:
+```def generate_launch_description():
+    """ Returns the launch description """
+
+    cnode = ComposableNode(
+        package='as2_state_estimator',
+        plugin='StateEstimator',
+        name='StateEstimator',
+        namespace='drone0',
+        parameters=[{
+            'namespace':'drone0',
+            'plugin_name':'ground_truth',
+            'use_sim_time':'true',
+            'plugin_config_file':'sim_config/state_estimator_config_file.yaml',
+            'base_frame':'base_link',
+            'global_ref_frame':'earth',
+            'odom_frame':'odom',
+            'map_frame':'map'
+        }]
+    )
+
+    container = ComposableNodeContainer(
+        name='hola',
+        namespace='drone0',
+        package='rclcpp_components',
+        executable='component_container',
+        composable_node_descriptions=[cnode],
+        output='screen',
+    )
+
+    launch_description = LaunchDescription([container])
+
+    return launch_description
+```
+<br>
+
+Código añadido a *_state_estimator.cpp_*:
+```
+#include "rclcpp_components/register_node_macro.hpp"
+
+// Register the component with class_loader.
+// This acts as a sort of entry point, allowing the component to be discoverable when its library
+// is being loaded into a running process.
+RCLCPP_COMPONENTS_REGISTER_NODE(StateEstimator)
+```
+<br>
+
+Código añadido a CMake:
+```
+# Components
+find_package(rclcpp_components REQUIRED)
+add_library(estimator_component SHARED
+  src/state_estimator.cpp
+)
+ament_target_dependencies(estimator_component ${PROJECT_DEPENDENCIES})
+rclcpp_components_register_nodes(estimator_component "StateEstimator")
+
+ament_export_targets(export_estimator_component)
+install(TARGETS estimator_component
+        EXPORT export_estimator_component
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+)
+```
+<br>
+
+Código añadido a *_package.xml_*:
+``` <depend>rclcpp_components</depend> ```
+
+
+
