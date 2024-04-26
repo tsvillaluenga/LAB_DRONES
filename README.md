@@ -332,4 +332,79 @@ Código añadido a *_package.xml_*:
 ``` <depend>rclcpp_components</depend> ```
 
 
+<br>
+<br>
+<br>
 
+**Solución:**
+https://docs.ros.org/en/humble/Tutorials/Intermediate/Composition.html
+
+**En cpp:**
+```
+NombreClase::NombreClase(const rclcpp::NodeOptions & options) : Node("NombreClase", options)
+```
+En el caso en el que la inialización original de la clase del tipo *rclcpp::NodeOptions* tenga algún valor concreto, mover dicha inicialización al archivo **.hpp** como valor por defecto.
+<br>
+Al final:
+```
+#include "rclcpp_components/register_node_macro.hpp"
+
+// Register the component with class_loader.
+// This acts as a sort of entry point, allowing the component to be discoverable when its library
+// is being loaded into a running process.
+RCLCPP_COMPONENTS_REGISTER_NODE(NombreClase)    --> Sustituir NombreClase!!!!!!!!!!!!!!
+```
+<br>
+
+**En hpp:**
+```NombreClase(const rclcpp::NodeOptions & options = rclcpp::NodeOptions());     //Constructor ```
+En el caso en el que el constructor del **.cpp** disponga de una inicializacion del tipo no vacía, sustituir en esta definicion del Constructor de la clase el ``` = rclcpp::NodeOptions()```por ``` = InicializacionDelCPP```
+
+<br>
+
+**En CMake:** 
+Añadir `rclcpp_components` en:
+```
+# find dependencies
+set(PROJECT_DEPENDENCIES
+  ament_cmake
+  rclcpp
+  pluginlib
+  as2_core
+  nav_msgs
+  geometry_msgs
+  tf2
+  tf2_ros
+  rclcpp_components
+)
+```
+<br>
+
+```
+# Components
+add_library(gazebo_platform_component SHARED  //Nombre que se le da al componente
+  src/gazebo_platform.cpp      //Ruta .cpp
+)
+ament_target_dependencies(gazebo_platform_component ${PROJECT_DEPENDENCIES})
+rclcpp_components_register_node(
+  gazebo_platform_component
+  PLUGIN "gazebo_platform::GazeboPlatform"    //Nombre de la clase de cpp. Si namespace: `nombre_namespace::NombreClase`, si no `NombreClase`.
+  EXECUTABLE gazebo_platform    //Nombre de clase searado por _
+)
+
+ament_export_targets(export_gazebo_platform_component)
+install(TARGETS gazebo_platform_component
+        EXPORT export_gazebo_platform_component
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+)
+
+```
+
+<br>
+
+**En *_package.xml_***:``` <depend>rclcpp_components</depend> ```
+
+<br>
+**En código:** Mantener todos los *FindPackageShare* y asociarlos en el diccionario de parámetros (es necesaria la asociación dinámica).
