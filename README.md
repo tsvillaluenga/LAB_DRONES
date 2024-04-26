@@ -336,7 +336,7 @@ Código añadido a *_package.xml_*:
 <br>
 <br>
 
-**Solución:**
+### Solución:
 https://docs.ros.org/en/humble/Tutorials/Intermediate/Composition.html
 
 **En cpp:**
@@ -407,4 +407,5 @@ install(TARGETS gazebo_platform_component
 **En *_package.xml_***:``` <depend>rclcpp_components</depend> ```
 
 <br>
+
 **En código:** Mantener todos los *FindPackageShare* y asociarlos en el diccionario de parámetros (es necesaria la asociación dinámica).
