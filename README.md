@@ -409,3 +409,11 @@ install(TARGETS gazebo_platform_component
 <br>
 
 **En código:** Mantener todos los *FindPackageShare* y asociarlos en el diccionario de parámetros (es necesaria la asociación dinámica).
+
+<br>
+<br>
+
+- [x] platform
+- [ ] behaviors
+- [ ] state estimator
+- [ ] controller
