@@ -419,3 +419,19 @@ install(TARGETS gazebo_platform_component
 - [ ] state estimator
 - [x] controller
 - [ ] viewer
+
+<br>
+<br>
+
+```
+`ros2 launch /home/tsvillaluenga/aerostack2_ws/src/aerostack2/as2_user_interfaces/as2_alphanumeric_viewer/launch/tsv_alphanumeric_viewer_launch.py
+```
+
+```
+[INFO] [launch]: All log files can be found below /home/tsvillaluenga/.ros/log/2024-05-26-23-29-00-379845-tsvillaluenga-HP-Pavilion-Laptop-15-cs1xxx-10384
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [component_container-1]: process started with pid [10396]
+[component_container-1] [INFO] [1716758941.489346852] [drone0.container]: Load Library: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so
+[component_container-1] [ERROR] [1716758941.512292078] [drone0.container]: Failed to load library: Could not load library dlopen error: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so: undefined symbol: stdscr, at ./src/shared_library.c:99
+[ERROR] [launch_ros.actions.load_composable_nodes]: Failed to load node 'AlphanumericViewer' of type 'AlphanumericViewer' in container '/drone0/container': Failed to load library: Could not load library dlopen error: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so: undefined symbol: stdscr, at ./src/shared_library.c:99
+```
