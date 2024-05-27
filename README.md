@@ -423,8 +423,17 @@ install(TARGETS gazebo_platform_component
 <br>
 <br>
 
+MÉTODO SOLUCIÓN ERROR: (as2 build ...) -->
 ```
-`ros2 launch /home/tsvillaluenga/aerostack2_ws/src/aerostack2/as2_user_interfaces/as2_alphanumeric_viewer/launch/tsv_alphanumeric_viewer_launch.py
+CMake Error at /opt/ros/humble/share/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake:29 (message):
+  rclcpp_components_register_nodes() first argument 'as2_alphanumeric_viewer'
+  is not a target
+Call Stack (most recent call first):
+  CMakeLists.txt:58 (rclcpp_components_register_nodes)
+```
+MÉTODO ANTERIOR A SOLUCIÓN ERROR: (as2 build ... --> GOOD ---> ros2 launch ... -->)
+```
+ros2 launch /home/tsvillaluenga/aerostack2_ws/src/aerostack2/as2_user_interfaces/as2_alphanumeric_viewer/launch/tsv_alphanumeric_viewer_launch.py
 ```
 
 ```
