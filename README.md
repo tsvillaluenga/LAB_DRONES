@@ -423,6 +423,7 @@ install(TARGETS gazebo_platform_component
 <br>
 <br>
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 MÉTODO SOLUCIÓN ERROR: (as2 build ...) -->
 ```
 CMake Error at /opt/ros/humble/share/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake:29 (message):
@@ -443,4 +444,11 @@ ros2 launch /home/tsvillaluenga/aerostack2_ws/src/aerostack2/as2_user_interfaces
 [component_container-1] [INFO] [1716758941.489346852] [drone0.container]: Load Library: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so
 [component_container-1] [ERROR] [1716758941.512292078] [drone0.container]: Failed to load library: Could not load library dlopen error: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so: undefined symbol: stdscr, at ./src/shared_library.c:99
 [ERROR] [launch_ros.actions.load_composable_nodes]: Failed to load node 'AlphanumericViewer' of type 'AlphanumericViewer' in container '/drone0/container': Failed to load library: Could not load library dlopen error: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so: undefined symbol: stdscr, at ./src/shared_library.c:99
+```
+
+
+STATE STIMATOR:
+```
+[component_container-1] [FATAL] [1716806331.944025583] [drone0.StateEstimator]: Failed to load plugin: According to the loaded plugin descriptions the class ::Plugin with base class type as2_state_estimator_plugin_base::StateEstimatorBase does not exist. Declared types are  ground_truth::Plugin mocap_pose::Plugin raw_odometry::Plugin
+[ERROR] [component_container-1]: process has died [pid 68079, exit code -11, cmd '/opt/ros/humble/lib/rclcpp_components/component_container --ros-args -r __node:=container -r __ns:=/drone0'].
 ```
