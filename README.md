@@ -447,26 +447,10 @@ ros2 launch /home/tsvillaluenga/aerostack2_ws/src/aerostack2/as2_user_interfaces
 ```
 
 
-STATE STIMATOR: (as2 build ...) -->
+STATE STIMATOR: 
 ```
-CMake Error at CMakeLists.txt:29 (find_package):
-  By not providing "Findmocap4r2_msgs.cmake" in CMAKE_MODULE_PATH this
-  project has asked CMake to find a package configuration file provided by
-  "mocap4r2_msgs", but CMake did not find one.
+[component_container-1] [ERROR] [1716987085.366858750] [drone0.container]: Component constructor threw an exception: Empty frame name
 
-  Could not find a package configuration file provided by "mocap4r2_msgs"
-  with any of the following names:
+```
++ CONTROLLER NO OBTIENE PARAMETROS
 
-    mocap4r2_msgsConfig.cmake
-    mocap4r2_msgs-config.cmake
-
-  Add the installation prefix of "mocap4r2_msgs" to CMAKE_PREFIX_PATH or set
-  "mocap4r2_msgs_DIR" to a directory containing one of the above files.  If
-  "mocap4r2_msgs" provides a separate development package or SDK, be sure it
-  has been installed.
-```
-otro: (sin buildear, ERROR ÚLTIMO BUILD)
-```
-[component_container-1] [FATAL] [1716806331.944025583] [drone0.StateEstimator]: Failed to load plugin: According to the loaded plugin descriptions the class ::Plugin with base class type as2_state_estimator_plugin_base::StateEstimatorBase does not exist. Declared types are  ground_truth::Plugin mocap_pose::Plugin raw_odometry::Plugin
-[ERROR] [component_container-1]: process has died [pid 68079, exit code -11, cmd '/opt/ros/humble/lib/rclcpp_components/component_container --ros-args -r __node:=container -r __ns:=/drone0'].
-```
