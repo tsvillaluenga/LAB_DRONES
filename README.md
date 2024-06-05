@@ -454,3 +454,33 @@ STATE STIMATOR:
 ```
 + CONTROLLER NO OBTIENE PARAMETROS
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lanzo missión --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/1cc2fb39-edd1-4ef7-b48a-ba735356ba81) --> otra terminal: `ros2 run topnode resource_monitor` --> `ros2 component load /drone0/container topnode ResourceMonitorNode
+`lo que devolverá `"Loaded component 8 into '/drone0/container' container node as '/resource_monitor'"` --> ABRO PLOTJUGGLER (ros2 run plotjuggler plotjuggler)
+
+
