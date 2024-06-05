@@ -481,6 +481,6 @@ STATE STIMATOR:
 
 
 lanzo missión --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/1cc2fb39-edd1-4ef7-b48a-ba735356ba81) --> otra terminal: `ros2 run topnode resource_monitor` --> `ros2 component load /drone0/container topnode ResourceMonitorNode
-`lo que devolverá `"Loaded component 8 into '/drone0/container' container node as '/resource_monitor'"` --> ABRO PLOTJUGGLER (ros2 run plotjuggler plotjuggler)
+`lo que devolverá `"Loaded component 8 into '/drone0/container' container node as '/resource_monitor'"` --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c4b6a20d-54e1-4108-a2bb-dbf86c2f99a1) (igual hay que ejecutar 2 veces el código anterior) --> `ros2 lifecycle set /resource_monitor configure MODO` + `ros2 lifecycle set /resource_monitor activate MODO` --> ABRO PLOTJUGGLER (ros2 run plotjuggler plotjuggler) --> Selecciono: 4x"behavior_status" (de cada behavior) + "resource_monitor" --> lanzo mission.py 
 
 
