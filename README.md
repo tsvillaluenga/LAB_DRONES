@@ -416,43 +416,13 @@ install(TARGETS gazebo_platform_component
 
 - [x] platform
 - [x] behaviors
-- [ ] state estimator
+- [x] state estimator
 - [x] controller
 - [ ] viewer
 
 <br>
 <br>
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-MÉTODO SOLUCIÓN ERROR: (as2 build ...) -->
-```
-CMake Error at /opt/ros/humble/share/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake:29 (message):
-  rclcpp_components_register_nodes() first argument 'as2_alphanumeric_viewer'
-  is not a target
-Call Stack (most recent call first):
-  CMakeLists.txt:58 (rclcpp_components_register_nodes)
-```
-MÉTODO ANTERIOR A SOLUCIÓN ERROR: (as2 build ... --> GOOD ---> ros2 launch ... -->)
-```
-ros2 launch /home/tsvillaluenga/aerostack2_ws/src/aerostack2/as2_user_interfaces/as2_alphanumeric_viewer/launch/tsv_alphanumeric_viewer_launch.py
-```
-
-```
-[INFO] [launch]: All log files can be found below /home/tsvillaluenga/.ros/log/2024-05-26-23-29-00-379845-tsvillaluenga-HP-Pavilion-Laptop-15-cs1xxx-10384
-[INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [component_container-1]: process started with pid [10396]
-[component_container-1] [INFO] [1716758941.489346852] [drone0.container]: Load Library: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so
-[component_container-1] [ERROR] [1716758941.512292078] [drone0.container]: Failed to load library: Could not load library dlopen error: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so: undefined symbol: stdscr, at ./src/shared_library.c:99
-[ERROR] [launch_ros.actions.load_composable_nodes]: Failed to load node 'AlphanumericViewer' of type 'AlphanumericViewer' in container '/drone0/container': Failed to load library: Could not load library dlopen error: /home/tsvillaluenga/aerostack2_ws/install/as2_alphanumeric_viewer/lib/libalphanumeric_viewer_component.so: undefined symbol: stdscr, at ./src/shared_library.c:99
-```
-
-
-STATE STIMATOR: 
-```
-[component_container-1] [ERROR] [1716987085.366858750] [drone0.container]: Component constructor threw an exception: Empty frame name
-
-```
-+ CONTROLLER NO OBTIENE PARAMETROS
 
 
 
@@ -465,22 +435,46 @@ STATE STIMATOR:
 
 
 
+##### SOLUCIÓN NO LECTURA DE PARÁMETROS:
+Ver pull request " as2 nodes to components #503" de aerostack --> commits "10f734cd5f4b7ee9ce2e6964a8e52f6cfd662afa" y "c388ba4e74406f0d21e2ff1f03a831975e495f76" (de "@pariaspe").
+
+
+
+
+<br>
+<br>
+############################################################################################################################################################################################################################################
+
+**Crear contenedor con nombre y namespace desde terminal**
+`ros2 run rclcpp_components component_container --ros-args -r __node:=aerostack2 -r __ns:=/drone0`
+
+############################################################################################################################################################################################################################################
 
 
 
 
 
 
+<br>
+<br>
 
-
-
-
-
-
-
-
+### Monitorización de composable nodes: 
 
 lanzo missión --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/1cc2fb39-edd1-4ef7-b48a-ba735356ba81) --> otra terminal: `ros2 run topnode resource_monitor` --> `ros2 component load /drone0/container topnode ResourceMonitorNode
 `lo que devolverá `"Loaded component 8 into '/drone0/container' container node as '/resource_monitor'"` --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c4b6a20d-54e1-4108-a2bb-dbf86c2f99a1) (igual hay que ejecutar 2 veces el código anterior) --> `ros2 lifecycle set /resource_monitor configure MODO` + `ros2 lifecycle set /resource_monitor activate MODO` --> ABRO PLOTJUGGLER (ros2 run plotjuggler plotjuggler) --> Selecciono: 4x"behavior_status" (de cada behavior) + "resource_monitor" --> lanzo mission.py 
+
+
+##### PROBLEMAS EJECUTANDO MISSION.py:
+platform --> ERROR. Se queda bloqueado en Takeoff y no sigue ejecutando (el Takeoff lo hace)
+
+state_estimator --> ERROR. Se queda bloqueado en Takeoff y no sigue ejecutando (el Takeoff lo hace)
+
+controller --> ERROR. No lee los parámetros cuando utilizamos el `LaunchConfigurationEquals('container', 'aerostack2')`
+
+behaviors --> GOOD si introducimos path completo en session de mission.py
+
+
+
+**ADICIONAL:** Se estan creando containers cada vez, por lo que hay que hacer que se cree si no existe y que se inserte el nodo en el container si este existe.
 
 
