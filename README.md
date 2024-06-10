@@ -478,3 +478,32 @@ behaviors --> GOOD si introducimos path completo en session de mission.py
 **ADICIONAL:** Se estan creando containers cada vez, por lo que hay que hacer que se cree si no existe y que se inserte el nodo en el container si este existe.
 
 
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+RESPUESTA MISSION NORMAL:
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/38311531-a124-412a-96db-9901c96e986f)
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/cdc0f729-8537-4bb6-b70f-8622009b28e5)
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/22d187fb-6e4b-4e0d-97ad-ad560721d835)
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/051c3124-7cd5-4a59-89c4-1a3e1aa2a8d2)
+
+
+
+
+
+
+
+
+
+
+
