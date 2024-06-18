@@ -513,6 +513,7 @@ RESPUESTA MISSION NORMAL:
 <br>
 
 # Resultados Monitorización
+Los picos de la gráfica `/resource_monitor/cpu_memory_usage/cpu_usage/percent` se relacionan con los **instantes de ejecución de** `mission.py` 
 
 ## Standalone Nodes
 
@@ -557,6 +558,9 @@ RESPUESTA MISSION NORMAL:
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/620fbe30-40fa-4600-a346-67e3c310a42c)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/f6cada04-746b-4d8b-94f2-f7671bcb8037)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/13392c3b-a08f-4125-942e-e01e1f5fa058)
+
+
+
 
 
 
