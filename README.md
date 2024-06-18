@@ -499,7 +499,64 @@ RESPUESTA MISSION NORMAL:
 
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+# Resultados Monitorización
+
+## Standalone Nodes
+
+## Composable Nodes
+
+### Isolated (use_intra_process_comms = True)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3616c17b-a639-458e-96c1-343799210d74)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5518af6d-a05b-4029-b052-617fefba88d4)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/28e1a393-d93b-4838-b585-e40af9baf25d)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/69d8e465-eb9d-4023-ad60-d6d5d9d846ee)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/0cd3d19d-56d3-4aea-b007-ddd7febcdb9f)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/adede43d-9540-4d9e-a615-243d96e6f6e2)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/02da7ad1-a32c-47e8-af16-c7ce3679209f)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9dec3554-6a60-4e5f-aca2-28b28284735f)
+
+### Isolated (use_intra_process_comms = False)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/61eaed28-3acb-4ae0-8a92-01757dd44518)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5f103845-d193-4e92-81a1-b58ab60be3b0)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/082f6d32-9961-4d08-acee-35f3ad5f5c6b)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e263a15a-a654-4539-ac06-8b7f3bbf68b0)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2aac6d07-efd3-404d-91b1-fa2b15a074fe)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/59fbe2c9-098f-4beb-b468-bb71bd2d0f3b)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6248b3c0-a76f-4425-8666-96f1d8d6479d)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/72b72461-c494-4b9c-b1fb-fab50e47bfaa)
+
+### Multithread (use_intra_process_comms = True)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9d2cf5e1-3e7e-4d94-ba08-922e3d930178)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d64047ae-eb4a-416b-928d-385303e1068d)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/fcce4975-b3ce-4b65-828b-72f62e769012)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/0e689696-9c5b-4b0a-b5ef-d3ea480f6442)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/954b7a0a-e8cd-4d98-8b58-9f9ccef02f15)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e691b12-76aa-4e84-a89e-0e03be4c8a61)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e1fe0e7-1dfa-4b60-8976-12e0081a7918)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/91bf187b-c57c-4528-bc6f-b0a20b5ecf39)
+
+### Multithread (use_intra_process_comms = False)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/b070c1ea-04fd-405f-8ac6-5db0d0ad680f)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5712a799-1476-4e35-ad7f-47108adf0afc)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/ebf34ab1-8d34-4d28-9e40-00c4922c90ac)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/262dfcba-50c9-4398-a718-a37f7bc2be4e)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7c0db4e4-e44b-4b97-9a55-5aab603daf68)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/620fbe30-40fa-4600-a346-67e3c310a42c)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/f6cada04-746b-4d8b-94f2-f7671bcb8037)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/13392c3b-a08f-4125-942e-e01e1f5fa058)
 
 
 
