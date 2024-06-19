@@ -515,6 +515,85 @@ RESPUESTA MISSION NORMAL:
 # Resultados Monitorización
 Los picos de la gráfica `/resource_monitor/cpu_memory_usage/cpu_usage/percent` se relacionan con los **instantes de ejecución de** `mission.py` 
 
+<br>
+
+### GLOSARIO:
+#### Resident Set Size (RSS)
+
+**Qué es Resident Set Size en Linux?**
+Resident Set Size (RSS) en Linux se refiere a la porción de la memoria de un proceso que está retenida en RAM. Esto incluye tanto las secciones de código como de datos de un proceso, pero excluye las páginas que se han intercambiado o las que están solo mapeadas a archivos. Representa la memoria física real que un proceso está usando en un momento dado.
+
+**Qué Produce el Aumento de Resident Set Size en Linux?**
+El aumento de RSS en Linux puede ser causado por un mayor uso de memoria física por parte del proceso. Esto puede ocurrir debido a:
+- Incremento en la cantidad de datos que el proceso maneja.
+- Carga de más librerías o módulos.
+- Ejecución de más hilos o subprocesos que requieren memoria adicional.
+
+#### Shared Memory
+
+**Qué es Shared Memory en Linux?**
+La memoria compartida en Linux es un segmento de memoria que puede ser accedido por múltiples procesos. Permite que diferentes procesos se comuniquen entre sí leyendo y escribiendo en un espacio de memoria común. Esto se utiliza para la comunicación entre procesos (IPC) para lograr un intercambio de datos de alto rendimiento.
+
+**Qué Produce el Aumento de Shared Memory en Linux?**
+El aumento de la memoria compartida puede ser causado por:
+- Más procesos utilizando segmentos de memoria compartida para comunicarse.
+- Incremento en el tamaño de los datos intercambiados entre procesos.
+- Uso de técnicas de IPC (Inter-Process Communication) más intensivas que requieren más espacio de memoria compartida.
+
+#### Virtual Memory
+
+**Qué es Virtual Memory en Linux?**
+Toda la memoria en Linux se llama memoria virtual; incluye la memoria física (a menudo llamada RAM) y el espacio de intercambio (swap). La memoria física de un sistema no puede aumentarse a menos que agreguemos más RAM. Sin embargo, la memoria virtual puede aumentarse utilizando espacio de intercambio del disco duro.
+
+**Qué Produce el Aumento de Virtual Memory en Linux?**
+El aumento de la memoria virtual puede ser causado por:
+- Incremento en el tamaño del programa y sus datos.
+- Uso de técnicas de memoria dinámica que reservan más espacio de direcciones virtuales.
+- Procesos que mapean archivos grandes en su espacio de direcciones virtuales.
+
+#### Data Size
+
+**Qué es Data Size en Linux?**
+El tamaño de datos en Linux se refiere a la cantidad de memoria asignada para el segmento de datos de un proceso. Este segmento incluye datos inicializados y no inicializados (variables globales y estáticas) del proceso. Es distinto del segmento de texto (que contiene el código real) y del segmento de pila (que contiene la pila de llamadas a funciones).
+
+**Qué Produce el Aumento de Data Size en Linux?**
+El aumento del tamaño de datos puede ser causado por:
+- Definición de más variables globales o estáticas.
+- Almacenamiento de más datos en estructuras que residen en el segmento de datos.
+- Inicialización de datos con valores más grandes.
+
+#### Program Size
+
+**Qué es Program Size en Linux?**
+El tamaño del programa en Linux generalmente se refiere a la cantidad total de memoria requerida por un proceso, lo que incluye todos sus segmentos: texto (código), datos (variables inicializadas y no inicializadas), pila (pila de llamadas a funciones) y heap (memoria asignada dinámicamente).
+
+**Qué Produce el Aumento de Program Size en Linux?**
+El aumento del tamaño del programa puede ser causado por:
+- Adición de más código (funciones y métodos).
+- Inclusión de más librerías o dependencias.
+- Incremento en la cantidad de datos estáticos y dinámicos que el programa maneja.
+
+
+#### CPU usage
+CPU utilization represents the amount of work a CPU handles to process resources or manage an operating system's tasks.
+
+
+#### RESOLUCIÓN
+Explicación de las variables tenidas en cuenta:
+:x:**memory_usage/shared_memory** --- NO --- Memoria que comparten los procesos. COMPARTEN MÁS, MENOS?
+:white_check_mark:**memory_usage/virtual_memory** --- MMMMM...BUENO SÍ
+:ballot_box_with_check:**memory_usage/max_resident_set_size** --- INTERESANTE* -- Uso de procesos y memoria RAM alocada
+:ballot_box_with_check:**memory_usage/percent** --- INTERESANTE* --- Porcentaje de la memoria total que se utiliza. 
+:x:**memory_state/data_size** --- NO --- Tamaño de las variables que se utilizan.
+:white_check_mark:**memory_state/program_size** --- PRINCIPAL --- Resumen de todo el uso de memoria.
+:white_check_mark:**cpu_usage/percent** --- SI --- Porcentaje del uso de la CPU total que se utiliza.
+
+
+**Memory Usage Percent vs Resident Set Size**:
+RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico está utilizando en un momento dado. Sin embargo, el uso de memoria total del sistema considera la memoria utilizada por todos los procesos en el sistema, así como la memoria usada por el kernel, buffers, cachés y otros componentes del sistema. Por tanto, el Resident Set Size tendrá mucho que ver dentro del Memory Usage Percent, pero no todo.
+
+
+
 ## Standalone Nodes
 
 ## Composable Nodes
