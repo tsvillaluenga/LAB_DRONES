@@ -577,21 +577,32 @@ El aumento del tamaño del programa puede ser causado por:
 #### CPU usage
 CPU utilization represents the amount of work a CPU handles to process resources or manage an operating system's tasks.
 
+---
 
 #### RESOLUCIÓN
 Explicación de las variables tenidas en cuenta:
 :x:**memory_usage/shared_memory** --- NO --- Memoria que comparten los procesos. COMPARTEN MÁS, MENOS?
+
 :white_check_mark:**memory_usage/virtual_memory** --- MMMMM...BUENO SÍ
+
 :ballot_box_with_check:**memory_usage/max_resident_set_size** --- INTERESANTE* -- Uso de procesos y memoria RAM alocada
+
 :ballot_box_with_check:**memory_usage/percent** --- INTERESANTE* --- Porcentaje de la memoria total que se utiliza. 
+
 :x:**memory_state/data_size** --- NO --- Tamaño de las variables que se utilizan.
+
 :white_check_mark:**memory_state/program_size** --- PRINCIPAL --- Resumen de todo el uso de memoria.
+
 :white_check_mark:**cpu_usage/percent** --- SI --- Porcentaje del uso de la CPU total que se utiliza.
 
+<br>
 
 **Memory Usage Percent vs Resident Set Size**:
 RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico está utilizando en un momento dado. Sin embargo, el uso de memoria total del sistema considera la memoria utilizada por todos los procesos en el sistema, así como la memoria usada por el kernel, buffers, cachés y otros componentes del sistema. Por tanto, el Resident Set Size tendrá mucho que ver dentro del Memory Usage Percent, pero no todo.
 
+<br>
+<br>
+<br>
 
 
 ## Standalone Nodes
@@ -608,6 +619,9 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/02da7ad1-a32c-47e8-af16-c7ce3679209f)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9dec3554-6a60-4e5f-aca2-28b28284735f)
 
+---
+
+
 ### Isolated (use_intra_process_comms = False)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/61eaed28-3acb-4ae0-8a92-01757dd44518)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5f103845-d193-4e92-81a1-b58ab60be3b0)
@@ -617,6 +631,9 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/59fbe2c9-098f-4beb-b468-bb71bd2d0f3b)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6248b3c0-a76f-4425-8666-96f1d8d6479d)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/72b72461-c494-4b9c-b1fb-fab50e47bfaa)
+
+---
+
 
 ### Multithread (use_intra_process_comms = True)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9d2cf5e1-3e7e-4d94-ba08-922e3d930178)
@@ -628,6 +645,9 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e1fe0e7-1dfa-4b60-8976-12e0081a7918)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/91bf187b-c57c-4528-bc6f-b0a20b5ecf39)
 
+---
+
+
 ### Multithread (use_intra_process_comms = False)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/b070c1ea-04fd-405f-8ac6-5db0d0ad680f)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5712a799-1476-4e35-ad7f-47108adf0afc)
@@ -637,6 +657,9 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/620fbe30-40fa-4600-a346-67e3c310a42c)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/f6cada04-746b-4d8b-94f2-f7671bcb8037)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/13392c3b-a08f-4125-942e-e01e1f5fa058)
+
+---
+
 
 
 
