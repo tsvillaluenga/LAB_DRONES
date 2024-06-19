@@ -621,6 +621,11 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 
 ---
 
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c213e56a-0571-4ac2-877c-76c422fc68a8)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d451b466-d87c-4dec-bf24-db02c1366a9e)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/48da61d1-d5ec-44ca-9c7b-c01e1b736ac2)
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3429e3be-232b-422d-8c86-bb37f5c44677)
+
 
 ### Isolated (use_intra_process_comms = False)
 ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/61eaed28-3acb-4ae0-8a92-01757dd44518)
