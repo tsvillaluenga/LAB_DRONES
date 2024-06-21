@@ -672,6 +672,20 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Se han ajustado los datos, puestos bien y solapado para poder comparr bien. ¿por que utilizo estas variables?
+utilizo etos archivos exactamente
+resultados
+
+
+
+
 
 
 
