@@ -696,12 +696,27 @@ resultados
   <tr>
     <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d451b466-d87c-4dec-bf24-db02c1366a9e" alt="ISOLATED_T CPU_Usage" width="400"/></td>
     <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c5f0b5e3-c464-477e-9f6d-c4a017db6e2c" alt="ISOLATED_F CPU_Usage" width="400"/></td>
-  </tr>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9d2b3e6c-0e04-4b07-9853-f7f126b297b9" alt="MT_T CPU_Usage" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/45c0e8b4-ed4d-42e4-9305-46f2f0f88090" alt="MT_F CPU_Usage" width="400"/></td>
+    </tr>
   <tr>
     <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6b2f51ad-fd7c-4686-97ed-0a506cdbea22" alt="ISOLATED_T Memory_Usage" width="400"/></td>
     <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/48da61d1-d5ec-44ca-9c7b-c01e1b736ac2" alt="ISOLATED_F Memory_Usage" width="400"/></td>
-  </tr>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/0f8c619d-3d1e-4d7c-9d16-5cfca7130211" alt="MT_T Memory_Usage" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/86e9281f-9716-4902-8087-30a83561c713" alt="MT_F Memory_Usage" width="400"/></td>
+      </tr>
+   <tr>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/a7294388-a2ca-43d3-bc58-4fc78bca0acc" alt="ISOLATED_T Shared_Memory" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2bda2cfa-6d99-4bad-adfa-f4591cf95fab" alt="ISOLATED_F Shared_Memory" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/31b695ff-7346-4e51-9e31-4a5e06b04eb0" alt="MT_T Shared_Memory" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2694e268-c3ad-455d-b669-8f4921d6326c" alt="MT_F Shared_Memory" width="400"/></td>
+      </tr>
+  
+
+
 </table>
+
+          ISOLATED_T                        ISOLATED_F                        MT_T                        MT_F
 
 
 
