@@ -683,6 +683,27 @@ Se han ajustado los datos, puestos bien y solapado para poder comparr bien. ¿po
 utilizo etos archivos exactamente
 resultados
 
+<br>
+<br>
+
+## Comparación Memory usage vs CPU usage
+
+## Imágenes en dos columnas y cuatro filas
+
+## Imágenes en dos columnas y cuatro filas
+
+<table>
+  <tr>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d451b466-d87c-4dec-bf24-db02c1366a9e" alt="ISOLATED_T CPU_Usage" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c5f0b5e3-c464-477e-9f6d-c4a017db6e2c" alt="ISOLATED_F CPU_Usage" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6b2f51ad-fd7c-4686-97ed-0a506cdbea22" alt="ISOLATED_T Memory_Usage" width="400"/></td>
+    <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/48da61d1-d5ec-44ca-9c7b-c01e1b736ac2" alt="ISOLATED_F Memory_Usage" width="400"/></td>
+  </tr>
+</table>
+
+
 
 
 
