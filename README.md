@@ -77,12 +77,12 @@ Un mismo **executor** para **varios nodos.**
 https://design.ros2.org/articles/node_lifecycle.html
 
 
-
+# ----------------------------
 <br>
 <br>
 
 
-## Monitorización de recursos
+# Monitorización de recursos
 Se han observado varios métodos:
 
 
@@ -193,60 +193,9 @@ Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-
 <br>
 <br>
 
-## Monitorización recursos - Datos obtenidos
-### Composable behaviors
+## Monitorización recursos - Confección composable nodes
 
-#### MISSION (mission.py)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2952bb5f-e98f-4260-ad0e-96197feb5b5c)
-<br>
-
-**Tiempo de ejecución de mission.py inicio y fin:**
-A partir de las siguientes gráficas se puede observar el tiempo de ejecución necesario a la hora de ejecutar el archivo mission.py.
-
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/85fa2971-e8ec-469e-ada6-a764cc77e006)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/241d056c-a437-44a1-974f-5fb6ffaace16)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/927a8356-d89e-4fb9-bcbc-648eca6fce0d)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/26ff80ad-4eb3-45d4-bfaf-5c1a803a0a9c)
-(A esta última gráfica no se le ha encontrado aún el sentido relativo al proceso)
-
-<br>
-
-**USO DE RECURSOS:**
-Tamaño de memoria utilizado durante ejecución del programa.
-
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/57c917a4-df86-4df0-928c-ae3e4a2210ae)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e23b2a2-0fb0-4614-8265-e53b48ed93b8)
-
-
----------------------------------------------------------------------
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e52b8804-6914-4c09-9447-2892329986b8)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d5c5bf38-4fe4-4145-9a15-fc9f23e79c2a)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3dae004a-8504-4288-b12e-5a1309040131)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e3096efb-6582-4a5e-8ed4-d8aae3177773)
-
-<br>
-
-### Conclusión
-
-No existen diferencias de uso de memoria a la hora de ejecutar un behavior u otro, el uso de memoria durante la ejecución es constante. Habrá que comprobar su uso de memoria usando diferentes caracteristicas para comprobar cuales proporcionan mejor rendimiento. 
-
-
-
-
-
-
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-
-## Standalone nodes -> Composable nodes
+### Standalone nodes -> Composable nodes
 **Referencias a tener en cuenta:**
 https://docs.ros.org/en/humble/Tutorials/Intermediate/Writing-a-Composable-Node.html
 https://docs.ros.org/en/humble/How-To-Guides/Launching-composable-nodes.html
@@ -418,101 +367,59 @@ install(TARGETS gazebo_platform_component
 - [x] behaviors
 - [x] state estimator
 - [x] controller
-- [ ] viewer
 
 <br>
 <br>
 
 
-
-
-
-
-
-
-
-
-
-
-
-##### SOLUCIÓN NO LECTURA DE PARÁMETROS:
+#### SOLUCIÓN NO LECTURA DE PARÁMETROS:
 Ver pull request " as2 nodes to components #503" de aerostack --> commits "10f734cd5f4b7ee9ce2e6964a8e52f6cfd662afa" y "c388ba4e74406f0d21e2ff1f03a831975e495f76" (de "@pariaspe").
 
 
 
 
+
 <br>
 <br>
-############################################################################################################################################################################################################################################
+
+## Monitorización recursos - Proceso de monitorización
+
+### Monitorización de composable nodes: 
+
+1º/ Lanzo missión y observo que se han cargado bien los nodos en el contenedor
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/1cc2fb39-edd1-4ef7-b48a-ba735356ba81)
+
+2º/ Otra terminal: `ros2 run topnode resource_monitor`
+3º/ Otra terminal: `ros2 component load /drone0/container topnode ResourceMonitorNode` lo que devolverá `"Loaded component 8 into '/drone0/container' container node as '/resource_monitor'"` _(igual hay que ejecutar 2 veces el código anterior)_
+
+![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c4b6a20d-54e1-4108-a2bb-dbf86c2f99a1) 
+
+4º/ Iniciar el monitoreo de recursos. Habrá que configurar primero el nodo `/resource_monitor` mediante un lifecycle. Para ello:
+
+```
+1º/ "ros2 lifecycle set /resource_monitor configure MODO"
+
+2º/ "ros2 lifecycle set /resource_monitor activate MODO"
+```
+
+Donde *MODO* puede ser: `--include-hidden-nodes`, `-s`, `--use-sim-time`, `--no-daemon` o `--spin-time`.
+
+ 5º/ ABRO PLOTJUGGLER (ros2 run plotjuggler plotjuggler) --> Selecciono: 4x"behavior_status" (de cada behavior) + "resource_monitor"
+ 6º/ En la primera ventana, **lanzo mission.py**
+
+<br>
+
+####################################################################################################
 
 **Crear contenedor con nombre y namespace desde terminal**
 `ros2 run rclcpp_components component_container --ros-args -r __node:=aerostack2 -r __ns:=/drone0`
 
-############################################################################################################################################################################################################################################
-
-
-
-
-
+####################################################################################################
 
 <br>
-<br>
 
-### Monitorización de composable nodes: 
-
-lanzo missión --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/1cc2fb39-edd1-4ef7-b48a-ba735356ba81) --> otra terminal: `ros2 run topnode resource_monitor` --> `ros2 component load /drone0/container topnode ResourceMonitorNode
-`lo que devolverá `"Loaded component 8 into '/drone0/container' container node as '/resource_monitor'"` --> ![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c4b6a20d-54e1-4108-a2bb-dbf86c2f99a1) (igual hay que ejecutar 2 veces el código anterior) --> `ros2 lifecycle set /resource_monitor configure MODO` + `ros2 lifecycle set /resource_monitor activate MODO` --> ABRO PLOTJUGGLER (ros2 run plotjuggler plotjuggler) --> Selecciono: 4x"behavior_status" (de cada behavior) + "resource_monitor" --> lanzo mission.py 
-
-
-##### PROBLEMAS EJECUTANDO MISSION.py:
-platform --> ERROR. Se queda bloqueado en Takeoff y no sigue ejecutando (el Takeoff lo hace)
-
-state_estimator --> ERROR. Se queda bloqueado en Takeoff y no sigue ejecutando (el Takeoff lo hace)
-
-controller --> ERROR. No lee los parámetros cuando utilizamos el `LaunchConfigurationEquals('container', 'aerostack2')`
-
-behaviors --> GOOD si introducimos path completo en session de mission.py
-
-
-
-**ADICIONAL:** Se estan creando containers cada vez, por lo que hay que hacer que se cree si no existe y que se inserte el nodo en el container si este existe.
-
-
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-
-RESPUESTA MISSION NORMAL:
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/38311531-a124-412a-96db-9901c96e986f)
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/cdc0f729-8537-4bb6-b70f-8622009b28e5)
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/22d187fb-6e4b-4e0d-97ad-ad560721d835)
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/051c3124-7cd5-4a59-89c4-1a3e1aa2a8d2)
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-# Resultados Monitorización
+## Resultados Monitorización
 Los picos de la gráfica `/resource_monitor/cpu_memory_usage/cpu_usage/percent` se relacionan con los **instantes de ejecución de** `mission.py` 
 
 <br>
@@ -583,7 +490,7 @@ CPU utilization represents the amount of work a CPU handles to process resources
 Explicación de las variables tenidas en cuenta:
 :x:**memory_usage/shared_memory** --- NO --- Memoria que comparten los procesos. COMPARTEN MÁS, MENOS?
 
-:white_check_mark:**memory_usage/virtual_memory** --- MMMMM...BUENO SÍ
+:ballot_box_with_check:**memory_usage/virtual_memory** --- Igual que program_size
 
 :ballot_box_with_check:**memory_usage/max_resident_set_size** --- INTERESANTE* -- Uso de procesos y memoria RAM alocada
 
@@ -604,93 +511,15 @@ RSS se refiere a la cantidad de memoria física (RAM) que un proceso específico
 <br>
 <br>
 
+## Resultados
+En los archivos del repositorio `Monitorizacion > Resultados` se pueden encontrar **todos los archivos con las imagenes comparativas entre métodos y un archivo .xlsx** donde aparecen los valores de media y máximos del CPU Usage.
 
-## Standalone Nodes
-
-## Composable Nodes
-
-### Isolated (use_intra_process_comms = True)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3616c17b-a639-458e-96c1-343799210d74)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5518af6d-a05b-4029-b052-617fefba88d4)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/28e1a393-d93b-4838-b585-e40af9baf25d)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/69d8e465-eb9d-4023-ad60-d6d5d9d846ee)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/0cd3d19d-56d3-4aea-b007-ddd7febcdb9f)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/adede43d-9540-4d9e-a615-243d96e6f6e2)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/02da7ad1-a32c-47e8-af16-c7ce3679209f)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9dec3554-6a60-4e5f-aca2-28b28284735f)
-
----
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c213e56a-0571-4ac2-877c-76c422fc68a8)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d451b466-d87c-4dec-bf24-db02c1366a9e)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/48da61d1-d5ec-44ca-9c7b-c01e1b736ac2)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/3429e3be-232b-422d-8c86-bb37f5c44677)
+En el caso del **CPU Usage**, se ha considerado que lo interesante es el valor medio del porcentaje, ya que los picos no parecen representativos.
 
 
-### Isolated (use_intra_process_comms = False)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/61eaed28-3acb-4ae0-8a92-01757dd44518)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5f103845-d193-4e92-81a1-b58ab60be3b0)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/082f6d32-9961-4d08-acee-35f3ad5f5c6b)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/e263a15a-a654-4539-ac06-8b7f3bbf68b0)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2aac6d07-efd3-404d-91b1-fa2b15a074fe)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/59fbe2c9-098f-4beb-b468-bb71bd2d0f3b)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6248b3c0-a76f-4425-8666-96f1d8d6479d)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/72b72461-c494-4b9c-b1fb-fab50e47bfaa)
+### Standalone Nodes
 
----
-
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/41cb8de7-37b0-4511-94e5-d89b54064ca7)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/c5f0b5e3-c464-477e-9f6d-c4a017db6e2c)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/6b2f51ad-fd7c-4686-97ed-0a506cdbea22)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/dd6a9970-223e-438b-b07b-efe8b7ce78bf)
-
-
-### Multithread (use_intra_process_comms = True)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/9d2cf5e1-3e7e-4d94-ba08-922e3d930178)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/d64047ae-eb4a-416b-928d-385303e1068d)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/fcce4975-b3ce-4b65-828b-72f62e769012)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/0e689696-9c5b-4b0a-b5ef-d3ea480f6442)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/954b7a0a-e8cd-4d98-8b58-9f9ccef02f15)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e691b12-76aa-4e84-a89e-0e03be4c8a61)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7e1fe0e7-1dfa-4b60-8976-12e0081a7918)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/91bf187b-c57c-4528-bc6f-b0a20b5ecf39)
-
----
-
-
-### Multithread (use_intra_process_comms = False)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/b070c1ea-04fd-405f-8ac6-5db0d0ad680f)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/5712a799-1476-4e35-ad7f-47108adf0afc)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/ebf34ab1-8d34-4d28-9e40-00c4922c90ac)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/262dfcba-50c9-4398-a718-a37f7bc2be4e)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/7c0db4e4-e44b-4b97-9a55-5aab603daf68)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/620fbe30-40fa-4600-a346-67e3c310a42c)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/f6cada04-746b-4d8b-94f2-f7671bcb8037)
-![image](https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/13392c3b-a08f-4125-942e-e01e1f5fa058)
-
----
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-Se han ajustado los datos, puestos bien y solapado para poder comparr bien. ¿por que utilizo estas variables?
-utilizo etos archivos exactamente
-resultados
-
-<br>
-<br>
-
-## Comparación Memory usage vs CPU usage
-
-## Imágenes en dos columnas y cuatro filas
-
-## Imágenes en dos columnas y cuatro filas
+### Composable Nodes
 
 <table>
   <tr>
@@ -711,16 +540,13 @@ resultados
     <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/31b695ff-7346-4e51-9e31-4a5e06b04eb0" alt="MT_T Shared_Memory" width="400"/></td>
     <td><img src="https://github.com/tsvillaluenga/LAB_DRONES/assets/47925585/2694e268-c3ad-455d-b669-8f4921d6326c" alt="MT_F Shared_Memory" width="400"/></td>
       </tr>
-  
-
-
 </table>
 
           ISOLATED_T                        ISOLATED_F                        MT_T                        MT_F
 
 
 
-
+Si nos damos cuenta, en los casos de ISOLATED, el uso de memoria (2ª fila) proporciona mayores saltos. Esto tiene sentido, ya que al unicamente utilizar un hilo para todos los nodos se necesitará una mayor gestión de la memoria. 
 
 
 
